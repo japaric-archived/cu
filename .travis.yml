@@ -1,17 +1,18 @@
+dist: trusty
 language: rust
-sudo: false
+sudo: required
 rust:
   - nightly
 
-addons:
-  apt:
-    packages:
-      - gcc-arm-none-eabi
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install -qq gcc-arm-none-eabi
 
 script:
   - cargo build --target=stm32f100 --verbose
   - cargo build --target=stm32f100 --release
   - arm-none-eabi-size target/stm32f100/release/0*
+  - arm-none-eabi-objdump -D target/stm32f100/release/0*
 
 branches:
   only: master
