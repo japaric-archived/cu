@@ -1,0 +1,21 @@
+{
+  "arch": "arm",
+  "llvm-target": "thumbv7m-none-eabi",
+  "os": "none",
+  "target-endian": "little",
+  "target-pointer-width": "32",
+
+  "cpu": "cortex-m3",
+  "executables": true,
+  "morestack": false,
+  "no-compiler-rt": true,
+  "pre-link-args": [
+    "-Tstm32f100.ld",
+    "-Wl,--build-id=none",
+    "-Wl,--gc-sections",
+    "-mcpu=cortex-m3",
+    "-mthumb",
+    "-nostartfiles"
+  ],
+  "relocation-model": "static"
+}

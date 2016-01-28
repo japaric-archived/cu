@@ -1,0 +1,3 @@
+[target.stm32f100]
+ar = "arm-none-eabi-ar"
+linker = "arm-none-eabi-gcc"
