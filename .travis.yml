@@ -1,0 +1,20 @@
+language: rust
+sudo: false
+rust:
+  - nightly
+
+addons:
+  apt:
+    packages:
+      - gcc-arm-none-eabi
+
+script:
+  - cargo build --target=stm32f100 --verbose
+  - cargo build --target=stm32f100 --release
+  - arm-none-eabi-size target/stm32f100/release/0*
+
+branches:
+  only: master
+
+notifications:
+  email: false
