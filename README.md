@@ -1,3 +1,7 @@
+[![Build Status][status]](https://travis-ci.org/japaric/cu)
+
+[status]: https://travis-ci.org/japaric/cu.svg?branch=master
+
 # `Copper`
 
 > Rust on ARM Cortex-M microcontrollers
