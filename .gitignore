@@ -1,4 +1,5 @@
-*.bk
 *.pdf
+*.rs.bk
 Cargo.lock
+sysroot
 target
