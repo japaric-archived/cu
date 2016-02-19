@@ -10,9 +10,7 @@
 
 #![no_std]
 
-// TODO remove this in favor of compiler-rt
-#[doc(hidden)]
-pub mod builtins;
+extern crate compiler_rt;
 
 pub mod asm;
 pub mod bb;

@@ -1,15 +1,19 @@
 dist: trusty
 language: rust
 sudo: required
-rust:
-  - nightly
+rust: nightly
 
 before_install:
   - sudo apt-get update
+
+install:
   - sudo apt-get install -qq gcc-arm-none-eabi
+  - cargo install --git https://github.com/japaric/cargo-sysroot
 
 script:
+  - cargo sysroot --target stm32f100 sysroot
   - cargo build --target=stm32f100 --verbose
+  - cargo sysroot --target stm32f100 --release sysroot
   - cargo build --target=stm32f100 --release
   - arm-none-eabi-size target/stm32f100/release/0*
   - arm-none-eabi-objdump -D target/stm32f100/release/0*
