@@ -1,19 +1,22 @@
-dist: trusty
+sudo: false
+
 language: rust
-sudo: required
+
 rust: nightly
 
-before_install:
-  - sudo apt-get update
+addons:
+  apt:
+    packages:
+      - gcc-arm-none-eabi
 
 install:
-  - sudo apt-get install -qq gcc-arm-none-eabi
-  - cargo install --git https://github.com/japaric/cargo-sysroot
+  - curl -sf "https://raw.githubusercontent.com/japaric/rust-everywhere/master/install.sh" | bash -s -- --from japaric/cargo-sysroot --tag v0.1.0-rc1 --at /home/travis/.cargo/bin
+  - export PATH="$PATH:/home/travis/.cargo/bin"
 
 script:
-  - cargo sysroot --target stm32f100 sysroot
-  - cargo build --target=stm32f100 --verbose
   - cargo sysroot --target stm32f100 --release sysroot
+  - export RUSTFLAGS="--sysroot sysroot/release"
+  - cargo build --target=stm32f100 --verbose
   - cargo build --target=stm32f100 --release
   - arm-none-eabi-size target/stm32f100/release/0*
   - arm-none-eabi-objdump -D target/stm32f100/release/0*
