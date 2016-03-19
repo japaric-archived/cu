@@ -7,7 +7,9 @@ rust: nightly
 addons:
   apt:
     packages:
+      # linaro toolchain is a 32-bit program, these packages are needed to run it
       - libc6-i386
+      - lib32ncurses5
 
 install:
   - mkdir ~/gcc-arm-none-eabi
