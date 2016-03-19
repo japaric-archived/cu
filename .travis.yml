@@ -7,7 +7,7 @@ rust: nightly
 addons:
   apt:
     packages:
-      # linaro toolchain is a 32-bit program, these packages are needed to run it
+      # linaro toolchain is a 32-bit program, this package is needed to run it
       - libc6-i386
 
 install:
@@ -20,7 +20,6 @@ script:
   - arm-none-eabi-gcc -v
   - cargo sysroot --target stm32f100 --release sysroot
   - export RUSTFLAGS="--sysroot sysroot/release"
-  - echo $PATH
   - cargo build --target=stm32f100 --verbose
   - cargo build --target=stm32f100 --release
   - arm-none-eabi-size target/stm32f100/release/0*
