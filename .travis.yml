@@ -14,6 +14,7 @@ install:
   - curl -sL "https://launchpad.net/gcc-arm-embedded/5.0/5-2015-q4-major/+download/gcc-arm-none-eabi-5_2-2015q4-20151219-linux.tar.bz2" | tar --strip-components 1 -C ~/gcc-arm-none-eabi -xj
   - curl -sf "https://raw.githubusercontent.com/japaric/rust-everywhere/master/install.sh" | bash -s -- --from japaric/cargo-sysroot --tag v0.1.0-rc1 --at /home/travis/.cargo/bin
   - export PATH="$PATH:~/.cargo/bin:~/gcc-arm-none-eabi/bin"
+  - arm-none-eabi-gcc -v
 
 script:
   - cargo sysroot --target stm32f100 --release sysroot
