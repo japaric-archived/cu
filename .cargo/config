@@ -1,2 +1,5 @@
+[build]
+target = "stm32f100"
+
 [target.stm32f100]
 linker = "arm-none-eabi-gcc"
