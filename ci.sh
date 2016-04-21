@@ -18,7 +18,7 @@ main() {
         mv cargo .cargo
         xargo build --release --verbose
         arm-none-eabi-size $(find target/stm32f100/release -maxdepth 1 -type f -executable)
-        arm-none-eabi-objdump $(find target/stm32f100/release -maxdepth 1 -type f -executable)
+        arm-none-eabi-objdump -CD $(find target/stm32f100/release -maxdepth 1 -type f -executable)
     '
 }
 
