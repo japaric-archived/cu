@@ -1,30 +1,16 @@
-sudo: false
+language: generic
 
-language: rust
+sudo: required
 
-rust: nightly
-
-addons:
-  apt:
-    packages:
-      # linaro toolchain is a 32-bit program, this package is needed to run it
-      - libc6-i386
-
-install:
-  - mkdir ~/gcc-arm-none-eabi
-  - curl -sL "https://launchpad.net/gcc-arm-embedded/5.0/5-2015-q4-major/+download/gcc-arm-none-eabi-5_2-2015q4-20151219-linux.tar.bz2" | tar --strip-components 1 -C ~/gcc-arm-none-eabi -xj
-  - curl -sf "https://raw.githubusercontent.com/japaric/rust-everywhere/master/install.sh" | bash -s -- --from japaric/xargo --at /home/travis/.cargo/bin
-  - export PATH="$PATH:$HOME/.cargo/bin:$HOME/gcc-arm-none-eabi/bin"
+services:
+  - docker
 
 script:
-  - arm-none-eabi-gcc -v
-  - xargo build --verbose
-  - xargo build --release
-  - arm-none-eabi-size target/stm32f100/release/0*
-  - arm-none-eabi-objdump -CD target/stm32f100/release/0*
+  - bash ci.sh
 
 branches:
   only: master
 
 notifications:
-  email: false
+  email:
+    on_success: never
