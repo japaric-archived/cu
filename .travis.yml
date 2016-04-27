@@ -9,8 +9,11 @@ script:
   - bash ci.sh
 
 branches:
-  only: master
+  only:
+    - auto
+    - master
 
 notifications:
   email:
     on_success: never
+  webhooks: http://japaric-homu.herokuapp.com/travis
