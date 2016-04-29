@@ -22,6 +22,7 @@ SECTIONS
     /DISCARD/ :
     {
       *(.ARM.exidx*)
+      *(.note.gnu.build-id*)
     }
 
     __STACK_START = ORIGIN(ram) + LENGTH(ram);
