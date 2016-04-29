@@ -1,5 +1,5 @@
 [build]
-target = "stm32f100"
+target = "thumbv7m-none-eabi"
 
-[target.stm32f100]
+[target.thumbv7m-none-eabi]
 linker = "arm-none-eabi-gcc"
