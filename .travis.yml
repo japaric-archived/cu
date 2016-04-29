@@ -16,4 +16,4 @@ branches:
 notifications:
   email:
     on_success: never
-  webhooks: http://japaric-homu.herokuapp.com/travis
+  webhooks: http://homu.herokuapp.com/travis
