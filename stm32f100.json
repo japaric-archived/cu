@@ -12,7 +12,6 @@
   "no-compiler-rt": true,
   "pre-link-args": [
     "-Tstm32f100.ld",
-    "-Wl,--gc-sections",
     "-mcpu=cortex-m3",
     "-mthumb",
     "-nostartfiles"
