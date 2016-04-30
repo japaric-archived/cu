@@ -5,7 +5,7 @@ use asm;
 extern "C" {
     fn __STACK_START();
     /// Reset
-    pub fn __reset();
+    pub fn start();
     /// Non-maskable interrupt
     pub fn __nmi();
     /// Hard fault
@@ -22,7 +22,7 @@ pub unsafe extern "C" fn __default_handler() {
 #[link_section = ".exceptions"]
 #[no_mangle]
 pub static __EXCEPTIONS: [Option<unsafe extern "C" fn()>; 16] = [Some(__STACK_START),
-                                                                 Some(__reset),
+                                                                 Some(start),
                                                                  None,
                                                                  None,
                                                                  None,

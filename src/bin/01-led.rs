@@ -5,7 +5,7 @@ extern crate cu;
 use cu::register;
 
 #[no_mangle]
-pub unsafe extern "C" fn __reset() {
+pub unsafe extern "C" fn start() {
     let ref mut rcc = register::RCC;
     let ref mut gpioc = register::GPIOC;
 

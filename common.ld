@@ -1,5 +1,3 @@
-ENTRY(__reset)
-
 __DATA_LOAD = LOADADDR(.data);
 
 SECTIONS
