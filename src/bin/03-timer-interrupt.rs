@@ -5,7 +5,7 @@ extern crate cu;
 use cu::{asm, bb, register};
 
 #[no_mangle]
-pub unsafe extern "C" fn __reset() {
+pub unsafe extern "C" fn start() {
     setup();
 
     loop_();
