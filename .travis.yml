@@ -12,6 +12,7 @@ branches:
   only:
     - auto
     - master
+    - try
 
 notifications:
   email:
