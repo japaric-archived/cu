@@ -1,6 +1,6 @@
 //! Runtime
 
-use core::{intrinsics, mem};
+use core::intrinsics;
 
 /// Abort
 pub fn abort() -> ! {
@@ -18,8 +18,10 @@ pub unsafe fn init_data() {
         static mut __DATA_START: u32;
     }
 
-    let n = (&__DATA_END as *const _ as usize - &__DATA_START as *const _ as usize) /
-            mem::size_of::<u32>();
+    // NOTE: wrapping_sub and bitshift are used here to avoid panics due to overflow checks and
+    // divide by zero.
+    let n = (&__DATA_END as *const _ as usize).wrapping_sub(&__DATA_START as *const _ as usize) >>
+            2;
 
     intrinsics::copy_nonoverlapping(&__DATA_LOAD, &mut __DATA_START, n);
 }

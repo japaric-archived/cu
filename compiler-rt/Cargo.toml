@@ -1,7 +1,0 @@
-[package]
-authors = ["Jorge Aparicio <japaricious@gmail.com>"]
-name = "compiler-rt"
-version = "0.1.0"
-
-[dependencies]
-rlibc = "1.0.0"

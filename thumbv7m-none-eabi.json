@@ -9,12 +9,15 @@
   "cpu": "cortex-m3",
   "executables": true,
   "morestack": false,
-  "no-compiler-rt": true,
   "pre-link-args": [
+    "-Wl,-(",
     "-Tstm32f100.ld",
     "-mcpu=cortex-m3",
     "-mthumb",
     "-nostartfiles"
+  ],
+  "post-link-args": [
+    "-Wl,-)"
   ],
   "relocation-model": "static"
 }

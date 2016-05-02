@@ -10,7 +10,7 @@
 
 #![no_std]
 
-extern crate compiler_rt;
+extern crate rlibc;
 
 pub mod asm;
 pub mod bb;
