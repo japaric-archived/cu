@@ -11,7 +11,7 @@ SECTIONS
         KEEP(*(.interrupts))
         link_interrupts_end = .;
         *(.text*)
-    } > rom
+    } > FLASH
 
     .data : ALIGN(4)
     {
@@ -19,7 +19,7 @@ SECTIONS
       *(.data*)
       . = ALIGN(4);
       __DATA_END = .;
-    } > ram AT > rom
+    } > SRAM AT > FLASH
 
     /DISCARD/ :
     {
@@ -27,11 +27,11 @@ SECTIONS
       *(.note.gnu.build-id*)
     }
 
-    __STACK_START = ORIGIN(ram) + LENGTH(ram);
+    __STACK_START = ORIGIN(SRAM) + LENGTH(SRAM);
 }
 
 /* Sanity checks */
-ASSERT ( link_exceptions_start == ORIGIN(rom), "exceptions not where expected" );
-ASSERT ( link_interrupts_start - ORIGIN(rom) == 0x40, "interrupts not where expected" );
+ASSERT ( link_exceptions_start == ORIGIN(FLASH), "exceptions not where expected" );
+ASSERT ( link_interrupts_start - ORIGIN(FLASH) == 0x40, "interrupts not where expected" );
 ASSERT ( link_exceptions_start < link_exceptions_end, "exceptions not linked in" );
 ASSERT ( link_interrupts_start < link_interrupts_end, "interrupts not linked in" );
