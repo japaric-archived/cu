@@ -3,7 +3,8 @@
 use asm;
 
 extern "C" {
-    fn __STACK_START();
+    /// The start of the stack
+    static __STACK_START: u32;
     /// Reset
     pub fn start();
     /// Non-maskable interrupt
@@ -18,11 +19,15 @@ pub unsafe extern "C" fn __default_handler() {
     asm::bkpt();
 }
 
+/// Points at the start of the stack. This is used as the initial value of the stack pointer.
+#[link_section = ".stack_pointer"]
+#[no_mangle]
+pub static __STACK_POINTER: &'static u32 = &__STACK_START;
+
 /// Cortex-M processor exceptions
 #[link_section = ".exceptions"]
 #[no_mangle]
-pub static __EXCEPTIONS: [Option<unsafe extern "C" fn()>; 16] = [Some(__STACK_START),
-                                                                 Some(start),
+pub static __EXCEPTIONS: [Option<unsafe extern "C" fn()>; 15] = [Some(start),
                                                                  None,
                                                                  None,
                                                                  None,
