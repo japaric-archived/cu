@@ -1,23 +1,23 @@
 {
-  "arch": "arm",
-  "data-layout": "e-m:e-p:32:32-i64:64-v128:64:128-a:0:32-n32-S64",
-  "llvm-target": "thumbv7m-none-eabi",
-  "os": "none",
-  "target-endian": "little",
-  "target-pointer-width": "32",
+    "arch": "arm",
+    "data-layout": "e-m:e-p:32:32-i64:64-v128:64:128-a:0:32-n32-S64",
+    "llvm-target": "thumbv7m-none-eabi",
+    "os": "none",
+    "target-endian": "little",
+    "target-pointer-width": "32",
 
-  "cpu": "cortex-m3",
-  "executables": true,
-  "morestack": false,
-  "pre-link-args": [
-    "-Wl,-(",
-    "-Tstm32f100.ld",
-    "-mcpu=cortex-m3",
-    "-mthumb",
-    "-nostartfiles"
-  ],
-  "post-link-args": [
-    "-Wl,-)"
-  ],
-  "relocation-model": "static"
+    "cpu": "cortex-m3",
+    "executables": true,
+    "morestack": false,
+    "pre-link-args": [
+        "-Wl,-(",
+        "-Tstm32f100.ld",
+        "-mcpu=cortex-m3",
+        "-mthumb",
+        "-nostartfiles"
+    ],
+    "post-link-args": [
+        "-Wl,-)"
+    ],
+    "relocation-model": "static"
 }
