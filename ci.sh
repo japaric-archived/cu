@@ -3,7 +3,7 @@
 set -ex
 
 main() {
-    local tag=2016-05-03
+    local tag=2016-05-10
 
     # The particle user has id = 1000, but this may not match the travis user id. To workaround this
     # issue, make everything world write-able.
