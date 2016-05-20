@@ -3,7 +3,7 @@
 extern crate cu;
 
 #[no_mangle]
-pub unsafe extern "C" fn start() {
+pub extern "C" fn start() {
     loop {}
 }
 
