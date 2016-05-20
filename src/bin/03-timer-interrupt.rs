@@ -5,7 +5,7 @@ extern crate cu;
 use cu::{asm, bb, register};
 
 #[no_mangle]
-pub extern "C" fn start() {
+pub extern "C" fn start() -> ! {
     unsafe {
         setup();
     }
@@ -36,7 +36,7 @@ unsafe fn setup() {
     tim7.cr1.write(*register::tim::cr1::DEFAULT.cen(true));
 }
 
-fn loop_() {
+fn loop_() -> ! {
     let ref pc8 = bb::GPIOC.odr[8];
 
     loop {

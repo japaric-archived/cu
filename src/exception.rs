@@ -6,7 +6,7 @@ extern "C" {
     /// The start of the stack
     static __STACK_START: u32;
     /// Reset
-    pub fn start();
+    pub fn start() -> !;
     /// Non-maskable interrupt
     pub fn __nmi();
     /// Hard fault
@@ -24,11 +24,15 @@ pub unsafe extern "C" fn __default_handler() {
 #[no_mangle]
 pub static __STACK_POINTER: &'static u32 = &__STACK_START;
 
+/// Program entry point: The reset function.
+#[link_section = ".reset"]
+#[no_mangle]
+pub static __RESET: Option<unsafe extern "C" fn() -> !> = Some(start);
+
 /// Cortex-M processor exceptions
 #[link_section = ".exceptions"]
 #[no_mangle]
-pub static __EXCEPTIONS: [Option<unsafe extern "C" fn()>; 15] = [Some(start),
-                                                                 None,
+pub static __EXCEPTIONS: [Option<unsafe extern "C" fn()>; 14] = [None,
                                                                  None,
                                                                  None,
                                                                  None,

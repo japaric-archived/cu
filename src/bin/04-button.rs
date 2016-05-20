@@ -5,7 +5,7 @@ extern crate cu;
 use cu::{bb, register};
 
 #[no_mangle]
-pub extern "C" fn start() {
+pub extern "C" fn start() -> ! {
     unsafe {
         setup();
     }
@@ -23,7 +23,7 @@ unsafe fn setup() {
     gpioc.crh.write(*register::gpio::crh::DEFAULT.cnf(8, 0b00).mode(8, 0b10));
 }
 
-fn loop_() {
+fn loop_() -> ! {
     let ref pa0 = bb::GPIOA.idr[0];
     let ref pc8 = bb::GPIOC.odr[8];
 
