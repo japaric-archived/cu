@@ -1,3 +1,4 @@
+#![no_main]
 #![no_std]
 
 extern crate cu;
@@ -37,6 +38,3 @@ fn loop_() -> ! {
         }
     }
 }
-
-// NOTE dummy
-fn main() {}

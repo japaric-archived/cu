@@ -1,3 +1,4 @@
+#![no_main]
 #![no_std]
 
 extern crate cu;
@@ -10,6 +11,3 @@ pub extern "C" fn start() -> ! {
 
     loop {}
 }
-
-// NOTE dummy
-fn main() {}

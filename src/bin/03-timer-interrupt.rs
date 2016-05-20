@@ -1,3 +1,4 @@
+#![no_main]
 #![no_std]
 
 extern crate cu;
@@ -53,6 +54,3 @@ pub unsafe extern "C" fn __tim7() {
 
     uif.clear();
 }
-
-// NOTE dummy
-fn main() {}
