@@ -7,3 +7,6 @@ version = "0.1.0"
 [dependencies]
 compiler-rt = { git = "https://github.com/japaric/compiler-rt.rs" }
 rlibc = "1.0.0"
+
+[profile.release]
+lto = true
