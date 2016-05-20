@@ -12,8 +12,6 @@
     "pre-link-args": [
         "-Wl,-(",
         "-Tstm32f100.ld",
-        "-mcpu=cortex-m3",
-        "-mthumb",
         "-nostartfiles"
     ],
     "post-link-args": [
