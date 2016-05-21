@@ -1,6 +1,6 @@
 //! Bit-banded peripherals
 
-use core::intrinsics;
+use core::ptr;
 
 pub mod gpio;
 pub mod rcc;
@@ -20,7 +20,7 @@ pub struct Ro(u32);
 impl Ro {
     /// Checks if the bit is set
     pub fn is_set(&self) -> bool {
-        unsafe { intrinsics::volatile_load(&self.0) != 0 }
+        unsafe { ptr::read_volatile(&self.0) != 0 }
     }
 }
 
@@ -32,19 +32,19 @@ impl Rw {
     /// Clears the bit
     pub fn clear(&self) {
         unsafe {
-            intrinsics::volatile_store(&self.0 as *const _ as *mut _, 0);
+            ptr::write_volatile(&self.0 as *const _ as *mut _, 0);
         }
     }
 
     /// Checks if the bit is set
     pub fn is_set(&self) -> bool {
-        unsafe { intrinsics::volatile_load(&self.0) != 0 }
+        unsafe { ptr::read_volatile(&self.0) != 0 }
     }
 
     /// Sets the bit
     pub fn set(&self) {
         unsafe {
-            intrinsics::volatile_store(&self.0 as *const _ as *mut _, 1);
+            ptr::write_volatile(&self.0 as *const _ as *mut _, 1);
         }
     }
 }

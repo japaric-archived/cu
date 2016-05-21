@@ -1,6 +1,6 @@
 //! Runtime
 
-use core::intrinsics;
+use core::ptr;
 
 /// Abort
 pub fn abort() -> ! {
@@ -23,5 +23,5 @@ pub unsafe fn init_data() {
     let n = (&__DATA_END as *const _ as usize).wrapping_sub(&__DATA_START as *const _ as usize) >>
             2;
 
-    intrinsics::copy_nonoverlapping(&__DATA_LOAD, &mut __DATA_START, n);
+    ptr::copy_nonoverlapping(&__DATA_LOAD, &mut __DATA_START, n);
 }

@@ -1,6 +1,6 @@
 //! Registers
 
-use core::intrinsics;
+use core::ptr;
 
 macro_rules! bits {
     ($($name:ident: $offset:expr),+,) => {
@@ -42,7 +42,7 @@ impl<T> Rw<T>
 {
     /// Reads the register value
     pub fn read(&self) -> T {
-        unsafe { intrinsics::volatile_load(&self.0) }
+        unsafe { ptr::read_volatile(&self.0) }
     }
 
     /// Updates the register value
@@ -59,7 +59,7 @@ impl<T> Rw<T>
         where T: From<U>
     {
         unsafe {
-            intrinsics::volatile_store(&mut self.0, T::from(value));
+            ptr::write_volatile(&mut self.0, T::from(value));
         }
     }
 }
@@ -76,7 +76,7 @@ impl<T> Wo<T>
         where T: From<U>
     {
         unsafe {
-            intrinsics::volatile_store(&mut self.0, T::from(value));
+            ptr::write_volatile(&mut self.0, T::from(value));
         }
     }
 }

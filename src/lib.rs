@@ -1,7 +1,6 @@
 //! STM32VLDISCOVERY
 
 #![feature(asm)]
-#![feature(core_intrinsics)]
 #![feature(lang_items)]
 
 #![allow(dead_code)]
