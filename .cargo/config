@@ -1,5 +1,2 @@
 [build]
 target = "cortex-m3"
-
-[target.thumbv7m-none-eabi]
-linker = "arm-none-eabi-gcc"
