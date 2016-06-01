@@ -8,7 +8,6 @@
 
     "cpu": "cortex-m3",
     "executables": true,
-    "morestack": false,
     "pre-link-args": [
         "-Wl,-(",
         "-Tstm32f100.ld",
