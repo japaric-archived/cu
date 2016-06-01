@@ -16,11 +16,11 @@ main() {
            bash -ex -c '
 rustup default nightly
 xargo build --release --verbose
-for elf in $(find target/thumbv7m-none-eabi/release -maxdepth 1 -type f -executable); do
+for elf in $(find target/cortex-m3/release -maxdepth 1 -type f -executable); do
     arm-none-eabi-readelf -h $elf | grep "Entry point address" | grep -v 0x0$;
 done
-arm-none-eabi-size $(find target/thumbv7m-none-eabi/release -maxdepth 1 -type f -executable)
-arm-none-eabi-objdump -CD $(find target/thumbv7m-none-eabi/release -maxdepth 1 -type f -executable)
+arm-none-eabi-size $(find target/cortex-m3/release -maxdepth 1 -type f -executable)
+arm-none-eabi-objdump -CD $(find target/cortex-m3/release -maxdepth 1 -type f -executable)
 '
 }
 
