@@ -2,7 +2,7 @@ __DATA_LOAD = LOADADDR(.data);
 
 SECTIONS
 {
-  .text : ALIGN(4)
+  .vector_table :
   {
     link_stack_pointer_start = .;
     LONG(ORIGIN(SRAM) + LENGTH(SRAM))
@@ -16,6 +16,10 @@ SECTIONS
     link_interrupts_start = .;
     KEEP(*(.interrupts))
     link_interrupts_end = .;
+  } > FLASH
+
+  .text :
+  {
     *(.text*)
   } > FLASH
 
