@@ -4,7 +4,7 @@
 
 # `Copper`
 
-> Test ground for the [Copper book](http://japaric.github.io/copper/)
+> Testing ground for the [Copper book](http://japaric.github.io/copper/)
 
 ## License
 
