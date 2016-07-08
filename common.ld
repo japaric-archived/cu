@@ -2,11 +2,9 @@ __DATA_LOAD = LOADADDR(.data);
 
 SECTIONS
 {
-  .vector_table :
+  .vector_table ORIGIN(FLASH) :
   {
-    link_stack_pointer_start = .;
-    LONG(ORIGIN(SRAM) + LENGTH(SRAM))
-    link_stack_pointer_end = .;
+    LONG(ORIGIN(RAM) + LENGTH(RAM))
     link_reset_start = .;
     KEEP(*(.reset))
     link_reset_end = .;
@@ -29,7 +27,7 @@ SECTIONS
     *(.data*)
     . = ALIGN(4);
     __DATA_END = .;
-  } > SRAM AT > FLASH
+  } > RAM AT > FLASH
 
   /DISCARD/ :
   {
@@ -39,11 +37,9 @@ SECTIONS
 }
 
 /* Sanity checks */
-ASSERT(link_stack_pointer_start == ORIGIN(FLASH), "initial stack pointer value not where expected");
 ASSERT(link_reset_start - ORIGIN(FLASH) == 4, "reset not where expected");
 ASSERT(link_exceptions_start - ORIGIN(FLASH) == 8, "exceptions not where expected");
 ASSERT(link_interrupts_start - ORIGIN(FLASH) == 0x40, "interrupts not where expected");
-ASSERT(link_stack_pointer_start < link_stack_pointer_end, "initial stack pointer value not linked in");
 ASSERT(link_reset_start < link_reset_end, "reset not linked in");
 ASSERT(link_exceptions_start < link_exceptions_end, "exceptions not linked in");
-ASSERT( link_interrupts_start < link_interrupts_end, "interrupts not linked in");
+ASSERT(link_interrupts_start < link_interrupts_end, "interrupts not linked in");
