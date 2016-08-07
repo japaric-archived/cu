@@ -5,6 +5,7 @@
     "executables": true,
     "linker": "arm-none-eabi-gcc",
     "llvm-target": "thumbv7m-none-eabi",
+    "no-compiler-rt": true,
     "os": "none",
     "post-link-args": ["-Wl,-)"],
     "pre-link-args": ["-Wl,-(", "-Tstm32f100.ld", "-nostartfiles"],

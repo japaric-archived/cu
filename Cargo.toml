@@ -5,8 +5,8 @@ name = "cu"
 version = "0.1.0"
 
 [dependencies]
-compiler-rt = { git = "https://github.com/japaric/compiler-rt.rs" }
 rlibc = "1.0.0"
+rustc_builtins = { git = "https://github.com/japaric/rustc-builtins" }
 
 [profile.release]
 lto = true
