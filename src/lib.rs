@@ -10,7 +10,6 @@
 #![no_std]
 
 extern crate rustc_builtins;
-extern crate rlibc;
 
 pub mod asm;
 pub mod bb;
