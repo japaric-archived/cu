@@ -2,4 +2,4 @@
 fn eh_personality() {}
 
 #[lang = "panic_fmt"]
-fn panic_fmt() {}
+extern fn panic_fmt() {}
