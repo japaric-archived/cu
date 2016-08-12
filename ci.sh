@@ -15,6 +15,7 @@ main() {
            japaric/copper:$tag \
            bash -ex -c '
 rustup default nightly
+xargo build
 xargo build --release --verbose
 for elf in $(find target/cortex-m3/release -maxdepth 1 -type f -executable); do
     arm-none-eabi-readelf -h $elf | grep "Entry point address" | grep -v 0x0$;
