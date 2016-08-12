@@ -8,7 +8,7 @@ version = "0.1.0"
 rlibc = "1.0.0"
 rustc_builtins = { git = "https://github.com/japaric/rustc-builtins" }
 
-[profile.debug]
+[profile.dev]
 panic = "abort"
 
 [profile.release]
