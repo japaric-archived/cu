@@ -15,7 +15,7 @@ inspect() {
         arm-none-eabi-readelf -h $elf | grep "Entry point address" | grep -v 0x0$;
     done
     arm-none-eabi-size $elfs
-    arm-none-eabi-objdump -CD $elfs
+    arm-none-eabi-objdump -Cd -j .vector_table -j .text $elfs
 }
 
 main() {
