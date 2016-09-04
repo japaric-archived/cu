@@ -1,12 +1,9 @@
 language: generic
-
+services: docker
 sudo: required
 
-services:
-  - docker
-
 script:
-  - bash ci.sh
+  - bash ci/script.sh
 
 branches:
   only:
