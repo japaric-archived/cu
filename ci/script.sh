@@ -2,6 +2,8 @@
 
 set -ex
 
+. $(dirname $0)/env.sh
+
 build() {
     xargo build --release --verbose
 }
