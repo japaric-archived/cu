@@ -9,7 +9,7 @@ build() {
 }
 
 inspect() {
-    local elfs=$(find target/cortex-m3/release -maxdepth 1 -type f -executable)
+    local elfs=$(find target/cortex-m3/release -maxdepth 1 -type f -executable | sort)
 
     for elf in $elfs; do
         arm-none-eabi-readelf -h $elf | grep "Entry point address" | grep -v 0x0$;
