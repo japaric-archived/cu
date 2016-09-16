@@ -7,8 +7,7 @@
     "llvm-target": "thumbv7m-none-eabi",
     "no-compiler-rt": true,
     "os": "none",
-    "post-link-args": ["-Wl,-)"],
-    "pre-link-args": ["-Wl,-(", "-Tstm32f100.ld", "-nostartfiles"],
+    "pre-link-args": ["-Tstm32f100.ld", "-nostartfiles"],
     "relocation-model": "static",
     "target-endian": "little",
     "target-pointer-width": "32"
