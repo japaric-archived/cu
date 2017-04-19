@@ -5,8 +5,7 @@ name = "cu"
 version = "0.1.0"
 
 [dependencies]
-rlibc = "1.0.0"
-rustc_builtins = { git = "https://github.com/japaric/rustc-builtins" }
+rustc_builtins = { git = "https://github.com/japaric/rustc-builtins", branch = "weak" }
 
 [profile.dev]
 panic = "abort"
